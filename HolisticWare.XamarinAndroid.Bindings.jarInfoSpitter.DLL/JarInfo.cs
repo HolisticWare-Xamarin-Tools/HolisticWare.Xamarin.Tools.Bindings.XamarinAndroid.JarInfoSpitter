@@ -25,22 +25,29 @@ namespace HolisticWare.XamarinAndroid.Bindings.jarInfoSpitter.DLL
 
 		public JarInfo ()
 		{
+			this.Application 	= "jar";
+			this.Arguments 		= "tf {JARNAME}";
+
+			return;
 		}
 
 		public JarInfo (string jarname)
+		: this()
 		{
-			this.JarName = jarname;
+			this.JarName 		= jarname;
 
 			return;
 		}
 
 		public List<JavaClass> JarTF ()
 		{
+			string args = this.Arguments.Replace("{JARNAME}", "accessory-v1.0.0.jar");
+
 			List<JavaClass> jar_tf = new List<JavaClass>();
 			//=========================================================================
 			System.Diagnostics.Process process = new System.Diagnostics.Process();
 			process.StartInfo.FileName = this.Application;
-			process.StartInfo.Arguments = this.Arguments;
+			process.StartInfo.Arguments = args;
 
 			process.StartInfo.CreateNoWindow = false;
 			process.StartInfo.UserName = "";
@@ -65,8 +72,10 @@ namespace HolisticWare.XamarinAndroid.Bindings.jarInfoSpitter.DLL
 
 				JavaClass jc =  new JavaClass()
 				{
-					ClassNameStringFromJarTF = line
+				 	JarName = this.JarName
+				 	//ClassNameStringFromJarTF = line // this will trigger further, so object must be constructed
 				};
+				jc.ClassNameStringFromJarTF = line;
 				jar_tf.Add(jc);
 			}
 

@@ -12,17 +12,13 @@ namespace HolisticWare.XamarinAndroid.Bindings.JarInfoSpitter.EXE
 	{
 		static void Main(string[] args)
 		{
-			string application = "jar";
-			string arguments = "tf {JARNAME}";
-
-			arguments = arguments.Replace("{JARNAME}", "accessory-v1.0.0.jar");
-
 			JarInfo ji =  new JarInfo();
-			ji.Application = application;
-			ji.Arguments = arguments;
+			ji.JarName = "accessory-v1.0.0.jar";
 
-			var result = ji.JarTF();
-			
+
+			List<JavaClass> result = ji.JarTF();
+
+			return;
 		}
 	}
 }
