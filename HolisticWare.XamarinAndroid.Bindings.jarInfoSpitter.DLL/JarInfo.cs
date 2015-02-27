@@ -73,7 +73,10 @@ namespace HolisticWare.XamarinAndroid.Bindings.jarInfoSpitter.DLL
 				JavaClass jc =  new JavaClass()
 				{
 				 	JarName = this.JarName
-				 	//ClassNameStringFromJarTF = line // this will trigger further, so object must be constructed
+				 	//-----------------------------------------------------------
+					// porperty setter will trigger furtheractions
+				 	// , so object must be constructed
+				 	// ClassNameStringFromJarTF = line 
 				};
 				jc.ClassNameStringFromJarTF = line;
 				jar_tf.Add(jc);
